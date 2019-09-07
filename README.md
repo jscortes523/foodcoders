@@ -1,2 +1,2 @@
 # foodcoders
-Proyecto Escuale Javascript
+Proyecto Escuele Javascripa
