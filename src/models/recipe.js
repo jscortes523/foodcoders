@@ -40,9 +40,9 @@ RecipeSchema.statics.randomRecipeByCategory = async function({categories,size}) 
   ])
 }
 
-RecipeSchema.statics.findByCategories = async function({category,limit}) {
+RecipeSchema.statics.findByCategories = async function({category}) {
 
-  return await this.find({categories:{$elemMatch:{$eq:category}}},{limit:limit})
+  return await this.find({categories:{$elemMatch:{$eq:category}}})
 }
 
 RecipeSchema.statics.findByContent = async function(content){
