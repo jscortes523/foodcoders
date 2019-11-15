@@ -21,7 +21,7 @@ async function addRecipe (req, res, next) {
 
     res.status(200).json(createdRecipe)
 }
-
+ 
 async function getRecipe(req, res, next){
     try{
         const {recipeid} = req.query
