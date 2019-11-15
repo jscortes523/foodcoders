@@ -1,0 +1,41 @@
+{
+  "name": "foodcoders",
+  "version": "1.0.0",
+  "description": "Zuper Market API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "DEBUG=app:* nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jscortes523/foodcoders.git"
+  },
+  "author": "foodcoders",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jscortes523/foodcoders/issues"
+  },
+  "homepage": "https://github.com/jscortes523/foodcoders#readme",
+  "dependencies": {
+    "@hapi/boom": "^8.0.1",
+    "@hapi/joi": "^16.1.7",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "mongodb": "^3.3.3",
+    "mongoose": "^5.7.5"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^1.19.4",
+    "prettier": "^1.18.2"
+  }
+}
