@@ -1,0 +1,15 @@
+[
+    {"fields":{
+      "image": "https://arepa.s3.amazonaws.com/camiseta.png",
+      "title": "Camiseta",
+      "price": 25,
+      "description": "bla bla bla bla bla"
+    },
+"model":"platzi_store.products"},
+    {"fields":{
+      "image": "https://arepa.s3.amazonaws.com/mug.png",
+      "title": "Mug",
+      "price": 10,
+      "description": "bla bla bla bla bla"
+    },"model":"platzi_store.products"}
+]
