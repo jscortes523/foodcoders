@@ -4,8 +4,8 @@ const Recipe = require('../models/recipe')
 const { weeklyTemplate } = require('../helpers/recommendations')
 const router = express.Router()
 
-router.get('/:recipeId',wrapAsync(getRecipe))
-    .get('/query/byCategories',wrapAsync(getRecipeByCategories))
+router.get('/',wrapAsync(getRecipe))
+    .get('/query/bycategory/:category',wrapAsync(getRecipeByCategories))
     .get('/query/byContent',wrapAsync(getRecipeByContent))
     .get('/weekly/recipes/rec', wrapAsync(getWeeklyRecommendations))
     .post('/', wrapAsync(addRecipe))
@@ -21,11 +21,12 @@ async function addRecipe (req, res, next) {
 
     res.status(200).json(createdRecipe)
 }
-
+ 
 async function getRecipe(req, res, next){
     try{
-        const {recipeId} = req.params
-        const recipe = Recipe.findOne({_id:recipeId})
+        const {recipeid} = req.query
+        console.log(recipeid)
+        const recipe = await Recipe.findOne({_id:recipeid})
 
         res.status(200).json(recipe)
     }catch(err){
@@ -35,9 +36,8 @@ async function getRecipe(req, res, next){
 
 async function getRecipeByCategories(req, res, next){
     try{                
-        const {categories} = req.body               
-        console.log(categories)
-        const recipes = await Recipe.findByCategories(categories)
+        const {category} = req.params               
+        const recipes = await Recipe.findByCategories({category,limit:10})
         
         res.status(200).json(recipes)
 
