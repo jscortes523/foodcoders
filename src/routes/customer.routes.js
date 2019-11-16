@@ -10,7 +10,7 @@ async function registerCustomer(request, response){
 
     console.log(request.body)
     const newCustomer = new Customer({
-        ...request.body
+        ...request.body,        
     })
 
     const savedCustomer = await newCustomer.save();
