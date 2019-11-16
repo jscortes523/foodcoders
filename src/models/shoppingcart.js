@@ -5,14 +5,13 @@ const Schema = mongoose.Schema
 const ShoppingCartSchema = new Schema({
     customer:{type:Schema.Types.ObjectId, ref:'Customer',required:true},
     type:{type:String, enum:['WishList','Cart']},
-    status:{type:String,enum:['Shopping','Scheduled','Checkout','Delivered']},
+    status:{type:String,enum:['Favourites','Shopping','Scheduled','Delivered']},
     purchaseDate:Date,
     items:[{
-        servings:Number,
         price:Number ,
-        recipe: Recipe,
+        recipe: {type:Schema.Types.ObjectId, ref:'Recipe'},
         schedule: { type: Date },
-        status:{type:String,enum:['Scheduled','Delivered']},
+        status:{type:String,enum:['Pending','Scheduled','Delivered']},
     }],
 },{
     timestamps:true

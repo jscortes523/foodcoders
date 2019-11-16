@@ -8,6 +8,7 @@ router.get('/',wrapAsync(getRecipe))
     .get('/query/bycategory/:category',wrapAsync(getRecipeByCategories))
     .get('/query/byContent',wrapAsync(getRecipeByContent))
     .get('/weekly/recipes/rec', wrapAsync(getWeeklyRecommendations))
+    .get('/daily', getDailyRecommendation)
     .post('/', wrapAsync(addRecipe))
 
 async function addRecipe (req, res, next) {
@@ -88,5 +89,20 @@ async function getWeeklyRecommendations(req,res, next){
     }
 }
 
+async function getDailyRecommendation(req, res, next){
+    try {
+        
+        const result = await Recipe.aggregate([{
+            $sample:{
+                size:1
+            }
+        }])
+
+        res.status(200).json(result[0])
+
+    } catch (error) {
+        next(error)
+    }
+}
 
 module.exports = router
