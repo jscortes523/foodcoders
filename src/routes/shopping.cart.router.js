@@ -1,4 +1,5 @@
 const express= require('express')
+const mongoose = require('mongoose')
 const _ = require('lodash')
 const moment = require('moment')
 const wrapAsync = require('../lib/wrap-async')
@@ -39,7 +40,8 @@ async function addItem(request,response,next){
 
         if(!customer || !type || !item) next(new Error('Incomplete Parameters'))
 
-        let cart = await ShoppingCart.findOne({customer,type})
+        let cart = await ShoppingCart.findOne({customer,type, status:'Shopping'})
+        const recipe = await Recipe.findOne({_id:mongoose.Types.ObjectId(item)})
 
         if(_.isEmpty(cart)){
         
@@ -52,13 +54,14 @@ async function addItem(request,response,next){
         }
 
         cart.items.push({
-            price:item.price,
-            recipe:item.recipe,
-            schedule:moment().toISOString()
+            price:recipe.price,
+            recipe:recipe._id,
+            schedule:moment().toISOString(),
+            status:'Pending'
         })
 
         const updatedCart = await cart.save()
-
+        console.log(updatedCart)
         response.status(201).json(updatedCart)
 
     }catch(err){

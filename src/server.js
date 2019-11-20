@@ -7,6 +7,7 @@ const shoppingCartRoutes = require('./routes/shopping.cart.router')
 const RecipeRoutes = require('./routes/recipe.routes')
 const PlanRoutes = require('./routes/plan.routes')
 const subscriptionRoutes = require('./routes/subscription.routes')
+const purchaseRoutes = require('./routes/purchase.routes')
 
 const {
     errorHandler,
@@ -39,6 +40,7 @@ router.use('/cart',shoppingCartRoutes)
 router.use('/recipe',RecipeRoutes)
 router.use('/plan',PlanRoutes)
 router.use('/subscription', subscriptionRoutes);
+router.use('/purchase', purchaseRoutes)
 app.use('/api', router)
 
 //Error middleware
