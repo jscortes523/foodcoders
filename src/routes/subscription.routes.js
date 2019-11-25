@@ -55,6 +55,7 @@ async function subscribe(req, res, next){
                 currentPeriodEnd:endDate.toISOString(),
                 active:true,
                 customerId:mongoose.Types.ObjectId(customerId),
+                remainingQuantity:plan.quantity,
                 plans:[]
             })
         }
@@ -82,7 +83,7 @@ async function unsubscribe(req, res, next){
     try {
         const { subscriptionId } = req.body
 
-
+        
 
     } catch (error) {
         next(next)

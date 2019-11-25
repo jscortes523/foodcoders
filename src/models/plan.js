@@ -9,7 +9,7 @@ const PlanSchema = new Schema({
     amount:Number,
     active:Boolean,
     benefits:[{
-        type:Schema.Types.ObjectId, ref:'Benefit'
+       type:Schema.Types.ObjectId, ref:'Benefit'
     }]
 })
 
